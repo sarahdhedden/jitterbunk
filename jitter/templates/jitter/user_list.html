@@ -1,8 +1,11 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
 
+<nav>
+	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> View Bunks </button>
+</nav>
+
 <h2> Users </h2>
-<button onclick="location.href='{% url 'jitter:bunks' %}'"> View Bunks </button>
 {% if user_list %}
 	{% for user in user_list %}
 		<div>

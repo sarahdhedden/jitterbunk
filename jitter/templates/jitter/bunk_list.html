@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
+
+{% if bunk_list %}
+	<table>
+	{% for bunk in bunk_list %}
+		<tr>
+		<td>
+			<div class="bunk">
+				<a href="{% url 'jitter:user' bunk.from_user.id %}" class="user-info"> 
+					<img class="user-photo" src="{{ bunk.from_user.photo }}" />
+					{{ bunk.from_user.username }}
+				</a>
+				<span class="arrow"> -> </span> 
+				<a href="{% url 'jitter:user' bunk.to_user.id %}" class="user-info"> 
+					<img class="user-photo" src="{{ bunk.to_user.photo }}" />
+					{{ bunk.to_user.username }}
+				</a>
+			</div>
+		</td>
+		<td class="bunk-time">
+			{{ bunk.time.date }}
+		</td>
+	</tr>
+	{% endfor %} 
+	</table>
+{% else %}
+	<p> No bunks. </p>
+{% endif %}

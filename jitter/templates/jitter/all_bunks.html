@@ -1,0 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
+
+<nav>
+	<button onclick="location.href='{% url 'jitter:users' %}'"> View Users </button>
+</nav>
+
+<h2> All Bunks </h2>
+{% include "jitter/bunk_list.html" %}
+

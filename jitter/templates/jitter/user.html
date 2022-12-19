@@ -1,8 +1,14 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
 
-<button onclick="location.href='{% url 'jitter:users' %}'"> View All Users </button>
-</br>
+<nav>
+	<button onclick="location.href='{% url 'jitter:users' %}'"> View All Users </button>
+	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> View All Bunks </button>
+</nav>
+
+<h1> {{user.username}}'s Bunks </h1>
+
+<h2> Bunk {{user.username}} </h2>
 <form action="{% url 'jitter:add_bunk' user.id %}" method="post">
 	{% csrf_token %}
 	<select name="from_user">
@@ -13,26 +19,14 @@
 	<input type="submit" value="Bunk {{user.username}}">
 </form>
 
-<h1> Bunks </h1>
-{% if bunk_list %}
-	{% for bunk in bunk_list %}
-		<div>
-		<div class="bunk">
-			<a href="{% url 'jitter:user' bunk.from_user.id %}" class="user-info"> 
-				<img class="user-photo" src="{{ bunk.from_user.photo }}" />
-				{{ bunk.from_user.username }}
-			</a>
-			-> 
-			<a href="{% url 'jitter:user' bunk.to_user.id %}" class="user-info"> 
-				<img class="user-photo" src="{{ bunk.to_user.photo }}" />
-				{{ bunk.to_user.username }}
-			</a>
-		</div>
-	</div>
-	{% endfor %}
-{% else %}
-	<p> No bunks. </p>
-{% endif %}
+<h2> Bunks Recieved </h2>
+{% include "jitter/bunk_list.html" with bunk_list=bunks_recieved %}
+
+<h2> Bunks Given </h2>
+{% include "jitter/bunk_list.html" with bunk_list=bunks_given %}
+
+
+
 
 
 
