@@ -4,7 +4,7 @@
 {% if bunk_list %}
 	<table>
 	{% for bunk in bunk_list %}
-		<tr>
+	<tr>
 		<td>
 			<div class="bunk">
 				<a href="{% url 'jitter:user' bunk.from_user.id %}" class="user-info"> 

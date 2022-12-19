@@ -1,6 +1,7 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
 
+{% include "jitter/header.html" %}
 <nav>
 	<button onclick="location.href='{% url 'jitter:users' %}'"> View Users </button>
 </nav>

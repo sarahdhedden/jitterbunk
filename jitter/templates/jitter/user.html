@@ -1,22 +1,24 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
 
+{% include "jitter/header.html" %}
 <nav>
 	<button onclick="location.href='{% url 'jitter:users' %}'"> View All Users </button>
 	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> View All Bunks </button>
 </nav>
 
-<h1> {{user.username}}'s Bunks </h1>
+<h1> {{user.username}}</h1>
 
 <h2> Bunk {{user.username}} </h2>
 <form action="{% url 'jitter:add_bunk' user.id %}" method="post">
 	{% csrf_token %}
-	<select name="from_user">
+	<strong> Bunker: </strong>
+	<select name="from_user" class="user-select">
 		{% for from_user in users %}
 			<option value="{{from_user.id}}"> {{from_user.username}} </option>
 		{% endfor %}
 	</select>
-	<input type="submit" value="Bunk {{user.username}}">
+	<input type="submit" value="&#128030;" class="bunk-button">
 </form>
 
 <h2> Bunks Recieved </h2>
