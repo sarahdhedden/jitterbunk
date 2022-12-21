@@ -1,0 +1,32 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
+
+{% include "jitter/header.html" %}
+<nav>
+	<button onclick="location.href='{% url 'jitter:users' %}'"> View All Users </button>
+	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> View All Bunks </button>
+</nav>
+
+<h1> {% include "jitter/user.html" %}</h1>
+{% if request.user.is_authenticated and request.user.id != user.id %}
+	<form action="{% url 'jitter:add_bunk' user.id %}" method="post">
+		{% csrf_token %}
+		<input type="submit" value="Bunk {{user}} &#128030;" class="bunk-button">
+	</form>
+{% elif request.user.is_authenticated %}
+	<a href="{% url 'jitter:update_profile' %}">
+		<button class="submit-button"> Change Profile Picture </button>
+	</a>
+{% endif %}
+
+<h2> Bunks Recieved </h2>
+{% include "jitter/bunk_list.html" with bunk_list=bunks_recieved %}
+
+<h2> Bunks Given </h2>
+{% include "jitter/bunk_list.html" with bunk_list=bunks_given %}
+
+
+
+
+
+

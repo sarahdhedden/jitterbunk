@@ -3,17 +3,16 @@
 
 {% include "jitter/header.html" %}
 <nav>
-	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> View Bunks </button>
+	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> 
+		View Bunks 
+	</button>
 </nav>
 
 <h2> Users </h2>
 {% if user_list %}
 	{% for user in user_list %}
 		<div>
-			<a href="{% url 'jitter:user' user.id %}" class="user-info"> 
-				<img class="user-photo" src="{{ user.photo }}" />
-				{{ user.username }}
-			</a>
+			{% include "jitter/user.html" %}
 		</div>
 	{% endfor %}
 {% else %}

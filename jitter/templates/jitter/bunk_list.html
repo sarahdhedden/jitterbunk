@@ -7,15 +7,9 @@
 	<tr>
 		<td>
 			<div class="bunk">
-				<a href="{% url 'jitter:user' bunk.from_user.id %}" class="user-info"> 
-					<img class="user-photo" src="{{ bunk.from_user.photo }}" />
-					{{ bunk.from_user.username }}
-				</a>
+				{% include "jitter/user.html" with user=bunk.from_user%}
 				<span class="arrow"> -> </span> 
-				<a href="{% url 'jitter:user' bunk.to_user.id %}" class="user-info"> 
-					<img class="user-photo" src="{{ bunk.to_user.photo }}" />
-					{{ bunk.to_user.username }}
-				</a>
+				{% include "jitter/user.html" with user=bunk.to_user%}
 			</div>
 		</td>
 		<td class="bunk-time">

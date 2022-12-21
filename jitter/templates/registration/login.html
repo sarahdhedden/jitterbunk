@@ -1,0 +1,11 @@
+{% if request.user.is_authenticated %}
+  <meta http-equiv="refresh" content="0; URL={% url 'jitter:users' %}" />
+{% endif %}
+
+  {% include "jitter/header.html" %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="submit-button">Login</button>
+  </form>

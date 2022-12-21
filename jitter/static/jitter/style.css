@@ -1,6 +1,9 @@
 .user-photo {
 	max-height: 30px;
 	max-width: 30px;
+	min-height: 30px;
+	min-width: 30px;
+	object-fit: fill;
 	border-radius: 50%;
 	margin: 0.5em 1em;
 }
@@ -19,4 +22,83 @@
 .bunk {
 	display: inline-flex;
 	align-items: center;
+}
+
+.bunk-time {
+	padding-left: 2em;
+}
+
+.bunk-button {
+	background-color: #ba5a0b;
+	color: white;
+	border: none;
+	border-radius: .3em;
+	padding: .4em 2em;
+}
+
+.bunk-button:hover {
+	background-color: #aa4a0b;
+}
+
+header button {
+	border: none;
+	border-radius: .3em;
+	padding: .4em 2em;
+	margin-left: 1em;
+}
+
+header button:hover {
+	background-color: lightgray;
+}
+
+.submit-button {
+	border: none;
+	border-radius: .3em;
+	padding: .4em 2em;
+	margin-left: 1em;
+}
+
+.submit-button:hover {
+	background-color: lightgray;
+}
+
+.user-select {
+	padding: .4em 2em;
+	border: none;
+	border-radius: .3em;
+}
+
+.arrow {
+	margin: .5em 1em;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	font-weight: bold;
+}
+
+nav button {
+	background-color: #ba5a0b;
+	color: white;
+	border: none;
+	border-radius: .3em;
+	padding: .5em 2em;
+}
+
+nav button:hover {
+	background-color: #aa4a0b;
+}
+
+body {
+	padding: 1em;
+}
+
+header {
+	display: inline-flex;
+	align-items: top;
+	justify-content: space-between;
+	width: 100%;
 }

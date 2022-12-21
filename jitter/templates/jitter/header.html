@@ -1,6 +1,30 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
 
-<h1> 
-	&#128030; Jitterbunk
-</h1>
+<header>
+	<h1> 
+		&#128030; Jitterbunk
+	</h1>
+
+    {% if request.user.is_authenticated%}
+    	<p>
+    		Hello 
+    		<a href="{% url 'jitter:user_page' request.user.id %}" > 
+    			{{ request.user.username }}! 
+    		</a>
+    		<a href="{% url 'jitter:logout' %}">
+    			<button class="logout-button"> Logout </button>
+    		</a>
+    	</p>
+    {% else %}
+    	<div>
+    		<a href="{% url 'jitter:login' %}">
+    			<button>Login</button>
+    		</a>
+
+    		<a href="{% url 'jitter:signup' %}">
+    			<button>Create Account</button>
+    		</a>
+    	</div>
+    {% endif %}
+</header>

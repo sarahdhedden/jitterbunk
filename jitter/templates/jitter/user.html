@@ -1,34 +1,11 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'jitter/style.css' %}">
 
-{% include "jitter/header.html" %}
-<nav>
-	<button onclick="location.href='{% url 'jitter:users' %}'"> View All Users </button>
-	<button onclick="location.href='{% url 'jitter:all_bunks' %}'"> View All Bunks </button>
-</nav>
-
-<h1> {{user.username}}</h1>
-
-<h2> Bunk {{user.username}} </h2>
-<form action="{% url 'jitter:add_bunk' user.id %}" method="post">
-	{% csrf_token %}
-	<strong> Bunker: </strong>
-	<select name="from_user" class="user-select">
-		{% for from_user in users %}
-			<option value="{{from_user.id}}"> {{from_user.username}} </option>
-		{% endfor %}
-	</select>
-	<input type="submit" value="&#128030;" class="bunk-button">
-</form>
-
-<h2> Bunks Recieved </h2>
-{% include "jitter/bunk_list.html" with bunk_list=bunks_recieved %}
-
-<h2> Bunks Given </h2>
-{% include "jitter/bunk_list.html" with bunk_list=bunks_given %}
-
-
-
-
-
-
+<a href="{% url 'jitter:user_page' user.id %}" class="user-info"> 
+	{% if user.photo %}
+		<img class="user-photo" src="{{user.photo.url}}"/>
+	{% else %}
+		<img class="user-photo" src="{% static 'jitter/images/default.png' %}"/>
+	{% endif %}
+	{{ user }}
+</a>
