@@ -1,17 +1,17 @@
-from django.shortcuts import render
-from django.views import generic
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.utils import timezone
-from django.shortcuts import get_object_or_404
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ImageField
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+from django.urls import reverse
+from django.shortcuts import reverse_lazy
+from django.utils import timezone
 from django.views import generic
 
 from .models import Bunk, JitterbunkUser
+
 
 class UserListView(generic.ListView):
     template_name = 'jitter/user_list.html'
